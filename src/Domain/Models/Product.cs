@@ -1,7 +1,6 @@
 using dws_ex_1.src.Domain.Helpers;
 
-namespace dws_ex_1.src.Domain.Models
-{
+namespace dws_ex_1.src.Domain.Models {
     public class Product {
         public int Id { get; set; }
         public string Name { get; set; }

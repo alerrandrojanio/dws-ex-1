@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace dws_ex_1.src.Domain.Models
-{
+namespace dws_ex_1.src.Domain.Models {
     public class Category {
         public int Id { get; set; }
         public string Name { get; set; }
