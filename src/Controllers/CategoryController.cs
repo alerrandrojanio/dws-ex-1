@@ -4,6 +4,7 @@ using dws_ex_1.src.Domain.Models;
 using dws_ex_1.src.Domain.Services.IServices;
 using dws_ex_1.src.Resources;
 using dws_ex_1.src.Mapping;
+using dws_ex_1.src.Extensions;
 
 namespace dws_ex_1.src.Controllers
 {
@@ -28,6 +29,23 @@ namespace dws_ex_1.src.Controllers
             );
 
             return resources;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var category = _mapper.Map<SaveCategoryResource, Category>(resource);
+            var result = await _categoryService.SaveAsync(category);
+
+            if (!result.Sucess)
+                return BadRequest(result.Message);
+
+            var CategoryResource = _mapper.Map<Category, CategoryResource>(result.Category);
+
+            return Ok(CategoryResource);
         }
     }
 }

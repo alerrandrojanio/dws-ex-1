@@ -5,5 +5,6 @@ namespace dws_ex_1.src.Domain.Repositories.IRepositories
     public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> ListAsync();
+        Task AddAsync(Category category);
     }
 }
