@@ -8,5 +8,6 @@ namespace dws_ex_1.src.Domain.Repositories.IRepositories
         Task AddAsync(Category category);
         Task<Category> FindByIdAsync(int id);
         void Update(Category category);
+        void Remove(Category category);
     }
 }
