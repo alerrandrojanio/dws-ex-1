@@ -7,5 +7,6 @@ namespace dws_ex_1.src.Domain.Services.IServices
     {
         Task<IEnumerable<Category>> ListAsync();
         Task<SaveCategoryResponse> SaveAsync(Category category);
+        Task<SaveCategoryResponse> UpdateAsync(int id, Category category);
     }
 }
