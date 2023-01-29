@@ -9,6 +9,7 @@ namespace dws_ex_1.src.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveCategoryResource, Category>();
+            CreateMap<SaveEmployeeResource, Employee>();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace dws_ex_1.src.Persistence.Context
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
@@ -37,6 +38,22 @@ namespace dws_ex_1.src.Persistence.Context
             builder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Entity<Product>().Property(p => p.QuatityInPackage).IsRequired();
             builder.Entity<Product>().Property(p => p.UnitOfMeasurement).IsRequired();
+
+            builder.Entity<Employee>().ToTable("Employees");
+            builder.Entity<Employee>().HasKey(p => p.Id);
+            builder.Entity<Employee>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Employee>().Property(p => p.Name).IsRequired().HasMaxLength(30);
+            builder.Entity<Employee>().Property(p => p.Birthday).IsRequired().HasMaxLength(30);
+            builder
+                .Entity<Employee>()
+                .HasData(
+                    new Employee
+                    {
+                        Id = 10,
+                        Name = "Francisco",
+                        Birthday = "2018-12-10T13:45:00.000Z"
+                    }
+                );
         }
     }
 }
